@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController{
-    __weak IBOutlet UIDatePicker *timePicker;
-    NSDateComponents *selectedTimeComponents;
-    NSCalendar *calendar;
+    __weak IBOutlet UIImageView *face;
 }
-- (IBAction)timePickerChange:(id)sender;
+- (void)makeFaceNeutral;
 
 @end
