@@ -17,16 +17,31 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    NSDate *date = [NSDate date];
-    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    components = [cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
     [self updateTime];
-    
+    [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
     [self changeFace];
 }
 
-- (void)updateTime
+- (void)initDialogueArray
 {
+    NSArray *positiveDefault = [[NSArray alloc] initWithObjects:@"Hello friend.", @"I knew you'd come back.", nil];
+    NSArray *neutralDefault = [[NSArray alloc] initWithObjects:@"Hello human.", @"Oh, you came back.", nil];
+    NSArray *negativeDefault = [[NSArray alloc] initWithObjects:@"Oh its you.", @"You're back for more?", nil];
+    
+    dialogueArray = [[NSMutableArray alloc]init];
+}
+
+- (void)updateTime:(NSTimer *)timer
+{
+    [self updateTime];
+}
+
+-(void)updateTime
+{
+    NSDate *date = [NSDate date];
+    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    components = [cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
+    
     int hour = [components hour];
     int minute = [components minute];
     NSString *timeZone = @"AM";

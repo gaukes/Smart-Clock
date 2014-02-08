@@ -15,13 +15,16 @@
     __weak IBOutlet UILabel *alarmTimeZone;
     __weak IBOutlet UILabel *dialogue;
     NSDateComponents *components;
+    NSMutableArray *dialogueArray;
 }
 - (void)makeFaceNeutral;
 - (void)makeFacePositive;
 - (void)makeFaceNegative;
 - (void)changeFace;
 - (void)changeFace: (int)happiness;
+- (void)updateTime: (NSTimer *)timer;
 - (void)updateTime;
 - (void)updateDialogue: (NSString *)tempDialogue;
+- (void)initDialogueArray;
 
 @end
