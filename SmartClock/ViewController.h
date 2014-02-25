@@ -9,14 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController{
-    __weak IBOutlet UIImageView *face;
     int happiness;
+    int dialogueIndex;
+    __weak IBOutlet UIButton *spriteFace;
     __weak IBOutlet UILabel *alarmTime;
     __weak IBOutlet UILabel *alarmTimeZone;
     __weak IBOutlet UILabel *dialogue;
     NSDateComponents *components;
-    NSMutableArray *dialogueArray;
+    NSArray *dialogueArray;
 }
+- (IBAction)onSpriteClick:(id)sender;
 - (void)makeFaceNeutral;
 - (void)makeFacePositive;
 - (void)makeFaceNegative;
@@ -24,7 +26,6 @@
 - (void)changeFace: (int)happiness;
 - (void)updateTime: (NSTimer *)timer;
 - (void)updateTime;
-- (void)updateDialogue: (NSString *)tempDialogue;
-- (void)initDialogueArray;
+- (void)updateDialogue;
 
 @end

@@ -16,19 +16,19 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor whiteColor];
+    dialogueIndex = 0;
+    dialogueArray = [[NSArray alloc]initWithObjects:@"Click Me.", @"Hello human.", @"You curious little critter.", @"From that dumb look on your face, I can tell you've never met me.", nil];
+    [self updateDialogue];
     
     [self updateTime];
     [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
     [self changeFace];
 }
 
-- (void)initDialogueArray
+- (void) onSpriteClick:(id)sender
 {
-    NSArray *positiveDefault = [[NSArray alloc] initWithObjects:@"Hello friend.", @"I knew you'd come back.", nil];
-    NSArray *neutralDefault = [[NSArray alloc] initWithObjects:@"Hello human.", @"Oh, you came back.", nil];
-    NSArray *negativeDefault = [[NSArray alloc] initWithObjects:@"Oh its you.", @"You're back for more?", nil];
-    
-    dialogueArray = [[NSMutableArray alloc]init];
+    NSLog(@"test print");
+    [self updateDialogue];
 }
 
 - (void)updateTime:(NSTimer *)timer
@@ -59,24 +59,27 @@
     alarmTimeZone.text = timeZone;
 }
 
-- (void)updateDialogue: (NSString *)tempDialogue
+- (void)updateDialogue
 {
-    dialogue.text = tempDialogue;
+    if (dialogueIndex < [dialogueArray count]) {
+        [dialogue setText:dialogueArray[dialogueIndex]];
+    }
+    dialogueIndex+=1;
 }
 
 - (void)makeFaceNeutral
 {
-    face.image = [UIImage imageNamed: @"neutral_face.png"];
+    [spriteFace setImage:[UIImage imageNamed:@"neutral_face.png"] forState:UIControlStateNormal];
 }
 
 - (void)makeFacePositive
 {
-    face.image = [UIImage imageNamed: @"positive_face.png"];
+    [spriteFace setImage:[UIImage imageNamed:@"positive_face.png"] forState:UIControlStateNormal];
 }
 
 - (void)makeFaceNegative
 {
-    face.image = [UIImage imageNamed: @"negative_face.png"];
+    [spriteFace setImage:[UIImage imageNamed:@"negative_face.png"] forState:UIControlStateNormal];
 }
 
 - (void)changeFace

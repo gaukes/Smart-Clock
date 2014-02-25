@@ -16,10 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bPz-w3-LlV">
-                                <rect key="frame" x="20" y="84" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FR2-p2-bqH">
                                 <rect key="frame" x="16" y="220" width="235" height="127"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -67,6 +63,16 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anw-6O-Vdf">
+                                <rect key="frame" x="20" y="84" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="neutral_face.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSpriteClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="veT-MG-Qnb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -76,7 +82,7 @@
                         <outlet property="alarmTime" destination="FR2-p2-bqH" id="lgH-6z-xe5"/>
                         <outlet property="alarmTimeZone" destination="N6E-AG-6Uo" id="Gna-LT-ndw"/>
                         <outlet property="dialogue" destination="Gy4-jW-lhD" id="WTu-vC-Rul"/>
-                        <outlet property="face" destination="bPz-w3-LlV" id="hV5-3w-f6R"/>
+                        <outlet property="spriteFace" destination="anw-6O-Vdf" id="JpJ-Rh-YHO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -95,10 +101,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Nt-gX-cVR">
-                                <rect key="frame" x="20" y="84" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnv-L7-EuU">
                                 <rect key="frame" x="16" y="220" width="235" height="127"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -142,6 +144,16 @@
                                     <segue destination="5FM-zK-4qb" kind="modal" animates="NO" id="cMb-qV-eTH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq6-Is-z18">
+                                <rect key="frame" x="20" y="84" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="neutral_face.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSpriteClick:" destination="Zw3-Hm-s2x" eventType="touchUpInside" id="ZGz-52-TZn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -151,12 +163,12 @@
                         <outlet property="alarmTime" destination="rnv-L7-EuU" id="R2e-z9-4Q8"/>
                         <outlet property="alarmTimeZone" destination="QCF-AA-wAj" id="Kfb-QU-hEL"/>
                         <outlet property="dialogue" destination="djP-e1-6gK" id="zd8-Cb-KWD"/>
-                        <outlet property="face" destination="0Nt-gX-cVR" id="RyD-60-Ehc"/>
+                        <outlet property="spriteFace" destination="Qq6-Is-z18" id="ica-yj-3fH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LRr-mN-6hk" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-384" y="105"/>
+            <point key="canvasLocation" x="-358" y="121"/>
         </scene>
         <!--View Controller - Alarm-->
         <scene sceneID="jH5-dr-unk">
@@ -170,10 +182,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VlM-SB-fUb">
-                                <rect key="frame" x="20" y="84" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vM-5S-d6F">
                                 <rect key="frame" x="16" y="220" width="235" height="127"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -221,6 +229,16 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XjS-37-hIv">
+                                <rect key="frame" x="20" y="84" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="neutral_face.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSpriteClick:" destination="5FM-zK-4qb" eventType="touchUpInside" id="YqM-tJ-mER"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -230,7 +248,7 @@
                         <outlet property="alarmTime" destination="6vM-5S-d6F" id="r68-7M-PMh"/>
                         <outlet property="alarmTimeZone" destination="7Gn-CW-Ebh" id="cLv-Pa-p2m"/>
                         <outlet property="dialogue" destination="FKW-Pe-DGB" id="WGc-83-3Gg"/>
-                        <outlet property="face" destination="VlM-SB-fUb" id="LSj-Ox-ggH"/>
+                        <outlet property="spriteFace" destination="XjS-37-hIv" id="hQy-vc-g8K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0H-yK-NQF" sceneMemberID="firstResponder"/>
@@ -241,6 +259,7 @@
     <resources>
         <image name="blue_button.png" width="2898" height="1032"/>
         <image name="green_button.png" width="2898" height="1032"/>
+        <image name="neutral_face.png" width="2169" height="2169"/>
         <image name="red_button.png" width="2898" height="1032"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -249,6 +268,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="x8l-LY-02k"/>
+        <segue reference="dgV-FW-Rhp"/>
     </inferredMetricsTieBreakers>
 </document>
