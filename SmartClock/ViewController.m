@@ -19,6 +19,8 @@
     dialogueIndex = 0;
     dialogueArray = [[NSArray alloc]initWithObjects:@"Click Me.", @"Hello human.", @"You curious little critter.", @"From that dumb look on your face, I can tell you've never met me.", nil];
     [self updateDialogue];
+    happiness++;
+    NSLog(@"%i", happiness);
     
     [self updateTime];
     [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];

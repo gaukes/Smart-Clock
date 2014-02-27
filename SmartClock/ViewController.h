@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface ViewController : UIViewController{
-    int happiness;
     int dialogueIndex;
     __weak IBOutlet UIButton *spriteFace;
     __weak IBOutlet UILabel *alarmTime;

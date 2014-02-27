@@ -27,6 +27,8 @@
 		AC7A6BC3189C2A970057A1BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7A6BA2189C2A970057A1BA /* UIKit.framework */; };
 		AC7A6BCB189C2A970057A1BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC7A6BC9189C2A970057A1BA /* InfoPlist.strings */; };
 		AC7A6BCD189C2A970057A1BA /* SmartClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7A6BCC189C2A970057A1BA /* SmartClockTests.m */; };
+		ACD01DF818BEC9EA00A8A7CB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD01DF718BEC9EA00A8A7CB /* libsqlite3.dylib */; };
+		ACD01DFB18BECA8100A8A7CB /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD01DFA18BECA8100A8A7CB /* Database.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,9 @@
 		AC7A6BC8189C2A970057A1BA /* SmartClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartClockTests-Info.plist"; sourceTree = "<group>"; };
 		AC7A6BCA189C2A970057A1BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AC7A6BCC189C2A970057A1BA /* SmartClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartClockTests.m; sourceTree = "<group>"; };
+		ACD01DF718BEC9EA00A8A7CB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		ACD01DF918BECA8100A8A7CB /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		ACD01DFA18BECA8100A8A7CB /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACD01DF818BEC9EA00A8A7CB /* libsqlite3.dylib in Frameworks */,
 				AC7A6BA1189C2A970057A1BA /* CoreGraphics.framework in Frameworks */,
 				AC7A6BA3189C2A970057A1BA /* UIKit.framework in Frameworks */,
 				AC7A6B9F189C2A970057A1BA /* Foundation.framework in Frameworks */,
@@ -126,6 +132,7 @@
 		AC7A6B9D189C2A970057A1BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ACD01DF718BEC9EA00A8A7CB /* libsqlite3.dylib */,
 				AC7A6B9E189C2A970057A1BA /* Foundation.framework */,
 				AC7A6BA0189C2A970057A1BA /* CoreGraphics.framework */,
 				AC7A6BA2189C2A970057A1BA /* UIKit.framework */,
@@ -142,6 +149,8 @@
 				AC7A6BB0189C2A970057A1BA /* Main.storyboard */,
 				AC7A6BB6189C2A970057A1BA /* ViewController.h */,
 				AC7A6BB7189C2A970057A1BA /* ViewController.m */,
+				ACD01DF918BECA8100A8A7CB /* Database.h */,
+				ACD01DFA18BECA8100A8A7CB /* Database.m */,
 				AC2415BA18A4D343005A0D83 /* Images */,
 				AC7A6BB9189C2A970057A1BA /* Images.xcassets */,
 				AC7A6BA5189C2A970057A1BA /* Supporting Files */,
@@ -283,6 +292,7 @@
 			files = (
 				AC7A6BB8189C2A970057A1BA /* ViewController.m in Sources */,
 				AC7A6BAF189C2A970057A1BA /* AppDelegate.m in Sources */,
+				ACD01DFB18BECA8100A8A7CB /* Database.m in Sources */,
 				AC7A6BAB189C2A970057A1BA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
