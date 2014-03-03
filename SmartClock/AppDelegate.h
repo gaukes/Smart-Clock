@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMDatabase.h"
 
 int happiness;
+FMDatabase *db;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
 }
+
+-(FMDatabase *)openDatabase;
 
 @property (strong, nonatomic) UIWindow *window;
 

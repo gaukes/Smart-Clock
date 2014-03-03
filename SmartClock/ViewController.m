@@ -16,11 +16,12 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    dialogueIndex = 0;
-    dialogueArray = [[NSArray alloc]initWithObjects:@"Click Me.", @"Hello human.", @"You curious little critter.", @"From that dumb look on your face, I can tell you've never met me.", nil];
-    [self updateDialogue];
     happiness++;
     NSLog(@"%i", happiness);
+    
+    Dialogue *tempDial = [self getRandomDialogue];
+    dialogueArray = tempDial.dialogueArray;
+    [self updateDialogue];
     
     [self updateTime];
     [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
@@ -29,7 +30,6 @@
 
 - (void) onSpriteClick:(id)sender
 {
-    NSLog(@"test print");
     [self updateDialogue];
 }
 
@@ -67,6 +67,15 @@
         [dialogue setText:dialogueArray[dialogueIndex]];
     }
     dialogueIndex+=1;
+}
+
+- (Dialogue *)getRandomDialogue
+{
+    FMResultSet *results = [db executeQuery:@"SELECT * FROM data ORDER BY RANDOM() LIMIT 1"];
+    [results next];
+    NSString *dial = [results stringForColumnIndex:1];
+    Dialogue *temp = [[Dialogue alloc] initWithdialogueArray:dial];
+    return temp;
 }
 
 - (void)makeFaceNeutral

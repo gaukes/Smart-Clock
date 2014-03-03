@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "Dialogue.h"
 
 @interface ViewController : UIViewController{
     int dialogueIndex;
@@ -27,5 +28,6 @@
 - (void)updateTime: (NSTimer *)timer;
 - (void)updateTime;
 - (void)updateDialogue;
+- (Dialogue *)getRandomDialogue;
 
 @end

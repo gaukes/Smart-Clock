@@ -15,9 +15,26 @@
     // Override point for customization after application launch.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     happiness = [defaults integerForKey:@"happiness"];
+    db = [self openDatabase];
     return YES;
 }
-							
+
+- (FMDatabase*) openDatabase
+{
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *documents_dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *db_path = [documents_dir stringByAppendingPathComponent:[NSString stringWithFormat:@"data.db"]];
+    NSString *template_path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"data.db"];
+    
+    if (![fm fileExistsAtPath:db_path]){
+        [fm copyItemAtPath:template_path toPath:db_path error:nil];
+    }
+    FMDatabase *tempdb = [FMDatabase databaseWithPath:db_path];
+    if (![tempdb open])
+        NSLog(@"failed to open database");
+    return tempdb;
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -46,6 +63,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:happiness forKey:@"happiness"];
     [defaults synchronize];
+    [db close];
 }
 
 @end
