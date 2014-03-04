@@ -25,7 +25,9 @@
     NSString *documents_dir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *db_path = [documents_dir stringByAppendingPathComponent:[NSString stringWithFormat:@"data.db"]];
     NSString *template_path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"data.db"];
-    
+    if ([fm fileExistsAtPath:db_path]){
+        [fm removeItemAtPath:db_path error:nil];
+    }
     if (![fm fileExistsAtPath:db_path]){
         [fm copyItemAtPath:template_path toPath:db_path error:nil];
     }
