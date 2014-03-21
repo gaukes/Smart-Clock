@@ -16,20 +16,37 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor whiteColor];
+    if (!previouslyUsed) {
+        NSLog(@"got this far");
+        [self firstTime];
+        [self updateDialogue];
+    } else {
+        dialogueArray = [self getRandomDialogue].dialogueArray;
+        [self updateDialogue];
+    }
     happiness++;
     NSLog(@"%i", happiness);
-    
-    Dialogue *tempDial = [self getRandomDialogue];
-    dialogueArray = tempDial.dialogueArray;
-    [self updateDialogue];
     
     [self updateTime];
     [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
     [self changeFace];
 }
 
+- (void) firstTime
+{
+    dialogueArray = [self getTutorialDialogue:tutorialIndex].dialogueArray;
+    alarmButton.enabled = false;
+    settingsButton.enabled = false;
+}
+
 - (void) onSpriteClick:(id)sender
 {
+    if(!previouslyUsed) {
+        if(dialogueIndex + 1 == [dialogueArray count]) {
+            alarmButton.enabled = true;
+            tutorialIndex += 1;
+        }
+    }
     [self updateDialogue];
 }
 
@@ -38,14 +55,14 @@
     [self updateTime];
 }
 
--(void)updateTime
+- (void)updateTime
 {
     NSDate *date = [NSDate date];
     NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     components = [cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
     
-    int hour = [components hour];
-    int minute = [components minute];
+    int hour = (int)[components hour];
+    int minute = (int)[components minute];
     NSString *timeZone = @"AM";
     
     if (hour >= 12) {
@@ -71,9 +88,20 @@
 
 - (Dialogue *)getRandomDialogue
 {
-    FMResultSet *results = [db executeQuery:@"SELECT * FROM data ORDER BY RANDOM() LIMIT 1"];
+    FMResultSet *results = [db executeQuery:@"SELECT * FROM data WHERE special=0 ORDER BY RANDOM()"];
     [results next];
-    NSString *dial = [results stringForColumnIndex:1];
+    NSString *dial = [results stringForColumnIndex:1]; //for some reason, this has to be 1
+    Dialogue *temp = [[Dialogue alloc] initWithdialogueArray:dial];
+    return temp;
+}
+
+- (Dialogue *)getTutorialDialogue:(int)placeNum
+{
+    FMResultSet *results = [db executeQuery:@"SELECT * FROM data WHERE special=1"];
+    for(int i=0; i < placeNum+1; i++) {
+        [results next];
+    }
+    NSString *dial = [results stringForColumnIndex:1]; //far some reason, this has to be 1
     Dialogue *temp = [[Dialogue alloc] initWithdialogueArray:dial];
     return temp;
 }

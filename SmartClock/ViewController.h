@@ -16,10 +16,13 @@
     __weak IBOutlet UILabel *alarmTime;
     __weak IBOutlet UILabel *alarmTimeZone;
     __weak IBOutlet UILabel *dialogue;
+    __weak IBOutlet UIButton *settingsButton;
+    __weak IBOutlet UIButton *alarmButton;
     NSDateComponents *components;
     NSArray *dialogueArray;
 }
 - (IBAction)onSpriteClick:(id)sender;
+- (void)firstTime;
 - (void)makeFaceNeutral;
 - (void)makeFacePositive;
 - (void)makeFaceNegative;

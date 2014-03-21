@@ -10,6 +10,8 @@
 #import "FMDatabase.h"
 
 int happiness;
+int tutorialIndex;
+BOOL previouslyUsed;
 FMDatabase *db;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {

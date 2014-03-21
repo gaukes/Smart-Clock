@@ -14,7 +14,8 @@
 {
     // Override point for customization after application launch.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    happiness = [defaults integerForKey:@"happiness"];
+    happiness = (int)[defaults integerForKey:@"happiness"];
+    previouslyUsed = [defaults boolForKey:@"previouslyUsed"];
     db = [self openDatabase];
     return YES;
 }
@@ -64,6 +65,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:happiness forKey:@"happiness"];
+    [defaults setBool:previouslyUsed forKey:@"previouslyUsed"];
     [defaults synchronize];
     [db close];
 }
